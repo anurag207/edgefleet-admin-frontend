@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import DroneFeed from './Components/DroneFeed';
 import DroneVitals from "./Components/DroneVitals";
 
 function DroneDetails() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  
+    useEffect(() => {
+      document.body.classList.remove('light', 'dark');
+      document.body.classList.add(theme);
+      document.body.classList.add('transition-theme');
+      localStorage.setItem('theme', theme);
+    }, [theme]);
+  
+    const toggleTheme = () => {
+      setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    };
 //   const { id } = useParams();
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -46,6 +58,11 @@ function DroneDetails() {
   };
 
   return (
+    <div>
+        {/*Light/Dark Theme Toggle*/}
+        <button onClick={toggleTheme} style={{ position: 'absolute', top: 10, right: 10 }}>
+          {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+        </button>
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
       <h2>Monitoring Drone: {drone.name}</h2>
       <div style={{ margin: '20px 0' }}>
@@ -103,6 +120,7 @@ function DroneDetails() {
     }}>
         ⬅ Back to Drone List
       </button>
+    </div>
     </div>
   );
 }
