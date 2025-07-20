@@ -7,7 +7,7 @@ const DroneVitals = ({ droneId }) => {
   useEffect(() => {
     const fetchVitals = async () => {
       try {
-        const response = await fetch(`http://localhost:1900/api/drones/${droneId}/vitals`);
+        const response = await fetch(import.meta.env.VITE_BACKEND_URL +`/api/drones/${droneId}/vitals`);
 
         if (!response.ok) throw new Error("Failed to fetch vitals");
 

@@ -24,7 +24,7 @@ function DroneDetails() {
     if (!confirmed) return;
 
     try {
-      const response = await fetch(`http://localhost:1900/api/drones/${drone.id}/command`, {
+      const response = await fetch(import.meta.env.VITE_BACKEND_URL +`/api/drones/${drone.id}/command`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

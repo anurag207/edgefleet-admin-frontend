@@ -7,7 +7,7 @@ const MissionLogs = () => {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const response = await fetch("http://localhost:1900/api/drones/logs");
+        const response = await fetch(import.meta.env.VITE_BACKEND_URL +"/api/drones/logs");
         const result = await response.json();
 
     if (Array.isArray(result)) {
