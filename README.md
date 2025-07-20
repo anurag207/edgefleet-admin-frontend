@@ -88,6 +88,8 @@ DroneVitals.jsx
 
 Uses polling every 3s to display live temperature, battery, signal
 
+*Has Light/Dark Theme Toggle*
+
 ⚙️ Global Controls
 Two buttons: Pause Mission and Return to Base
 
@@ -102,42 +104,33 @@ Fetches command logs with timestamps and drone position
 Displays data fetched from:
 GET /api/drones/actions
 
-🎯 Design Decisions
-✅ Socket.IO was used for image streaming to reduce load vs. polling.
+  Design Decisions
+1. Socket.IO was used for image streaming to reduce load vs. polling.
 
-✅ Polling is acceptable for vitals due to simplicity and minor size.
+2. Polling is acceptable for vitals due to simplicity and minor size.
 
-✅ Used localStorage for persistent session and role-based access.
+3. Used localStorage for persistent session and role-based access.
 
-✅ Clean component folder structure for scalability.
+4. Clean component folder structure for scalability.
 
-✅ Styling is scoped using CSS Modules to avoid global leakage.
+5. Styling is scoped using CSS Modules to avoid global leakage.
 
-✅ Project bootstrapped with Vite for fast HMR and dev experience.
+6. Project bootstrapped with Vite for fast HMR and dev experience.
 
   Features :
-Role-based admin authentication
 
-Live drone image stream (real-time via WebSocket)
+1. Role-based admin authentication
 
-Drone vitals tracking (polling)
+2. Live drone image stream (real-time via WebSocket)
 
-Global control buttons with confirmation
+3. Drone vitals tracking (polling)
 
-Mission logs page with timestamp and geolocation
+4. Global control buttons with confirmation
 
-Protected routes using ProtectedRoute and authCheck.js
+5. Mission logs page with timestamp and geolocation
+
+6. Protected routes using ProtectedRoute and authCheck.js
 
 
-🚀 Future Improvements
-Replace polling for vitals with WebSockets
-
-Migrate to JWT-based secure auth
-
-Add map view for drone position using Leaflet.js or Google Maps
-
-Enhance UI with component libraries (e.g., Chakra UI, MUI)
-
-Add real database integration for auth and logs
 
 

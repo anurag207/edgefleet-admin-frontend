@@ -62,6 +62,7 @@ function AdminPanel() {
       </table>
 
     </div>
+
   );
 }
 

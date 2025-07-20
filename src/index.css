@@ -3,3 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.transition-theme {
+  transition: background-color 0.3s, color 0.3s;
+}
