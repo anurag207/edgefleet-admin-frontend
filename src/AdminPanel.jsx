@@ -5,6 +5,10 @@ import styles from "./AdminPanel.module.css";
 function AdminPanel() {
   const [drones, setDrones] = useState([]);
   const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
 
   useEffect(() => {
     fetch("http://localhost:1900/api/drones")
@@ -26,6 +30,7 @@ function AdminPanel() {
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>Admin Panel - Active Drones</h2>
+      <button onClick={handleLogout} style={{ float: "right" }}>Logout</button>
       <table className={styles.table}>
         <thead>
           <tr>
