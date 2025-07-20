@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import DroneFeed from './Components/DroneFeed';
+import DroneVitals from "./Components/DroneVitals";
 
 function DroneDetails() {
 //   const { id } = useParams();
@@ -24,6 +25,7 @@ function DroneDetails() {
         <h3>Live Feed</h3>
         <DroneFeed droneId={drone.id} /> {/* Image Feed Component */}
       </div>
+        <DroneVitals droneId={drone.id} /> {/* Drone Vitals Component */}
       <ul>
         <li> Live image stream </li>
         <li>Current vitals: temperature, battery, signal (mock)</li>

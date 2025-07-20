@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
+
 const DroneFeed = ({ droneId }) => {
   const [feed, setFeed] = useState(null);
-  const [error, setError] = useState(null);
+//   const [error, setError] = useState(null); //POLLING LOGIC COMMENTED OUT
 
 //   useEffect(() => {
 //     const fetchFeed = async () => {
@@ -28,7 +29,7 @@ const DroneFeed = ({ droneId }) => {
 //     return () => clearInterval(interval);
 //   }, [droneId]);
 
-useEffect(() => {
+useEffect(() => { //using socket instead of polling 
     // Connect socket
     const socket = io("http://localhost:1900", {
       transports: ['websocket'],
@@ -54,7 +55,7 @@ useEffect(() => {
   }, [droneId]);
 
 
-  if (error) return <p>Error: {error}</p>;
+//   if (error) return <p>Error: {error}</p>;
   if (!feed) return <p>Loading feed...</p>;
 
   return (
@@ -70,3 +71,5 @@ useEffect(() => {
 };
 
 export default DroneFeed;
+
+
