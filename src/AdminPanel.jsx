@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./AdminPanel.module.css";
 
 function AdminPanel() {
   const [drones, setDrones] = useState([]);
-  const [selectedDrone, setSelectedDrone] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:1900/api/drones")
@@ -18,6 +19,10 @@ function AdminPanel() {
       });
   }, []);
 
+  const handleMonitor = (drone) => {
+    navigate(`/admin/${drone.id}`, { state: { drone } });
+  };
+
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>Admin Panel - Active Drones</h2>
@@ -27,7 +32,7 @@ function AdminPanel() {
             <th>ID</th>
             <th>Name</th>
             <th>Status</th>
-            <th>Select</th>
+            <th className={styles.monitorColumn}>Monitor</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +44,7 @@ function AdminPanel() {
               <td>
                 <button
                   className={styles.selectButton}
-                  onClick={() => setSelectedDrone(drone)}
+                  onClick={() => handleMonitor(drone)}
                 >
                   Select
                 </button>
@@ -49,16 +54,6 @@ function AdminPanel() {
         </tbody>
       </table>
 
-      {selectedDrone && (
-        <div className={styles.selectedDrone}>
-          <h3>Selected Drone: {selectedDrone.name}</h3>
-          <ul>
-            <li>Live image stream</li>
-            <li>Current vitals (temperature, battery, signal)</li>
-            <li>Controls: Pause mission, Return to base</li>
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
