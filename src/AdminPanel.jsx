@@ -5,6 +5,10 @@ import styles from "./AdminPanel.module.css";
 function AdminPanel() {
   const [drones, setDrones] = useState([]);
   const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
 
   useEffect(() => {
     fetch("http://localhost:1900/api/drones")
@@ -25,7 +29,10 @@ function AdminPanel() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.heading}>Admin Panel - Active Drones</h2>
+      <div className={styles.header}>
+  <h2 className={styles.heading}>Admin Panel - Active Drones</h2>
+  <button onClick={handleLogout} className={styles.logoutButton}>Logout</button>
+</div>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -36,8 +43,8 @@ function AdminPanel() {
           </tr>
         </thead>
         <tbody>
-          {drones.map((drone) => (
-            <tr key={drone.id}>
+          {drones.map((drone, index) => (
+            <tr key={drone.id} className={index % 2 === 0 ? styles.rowEven : styles.rowOdd}>
               <td>{drone.id}</td>
               <td>{drone.name}</td>
               <td>{drone.status}</td>
