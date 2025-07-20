@@ -31,7 +31,7 @@ const DroneFeed = ({ droneId }) => {
 
 useEffect(() => { //using socket instead of polling 
     // Connect socket
-    const socket = io("http://localhost:1900", {
+    const socket = io(import.meta.env.VITE_BACKEND_URL, {
       transports: ['websocket'],
     });
 

@@ -11,7 +11,7 @@ function AdminPanel() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:1900/api/drones")
+    fetch(import.meta.env.VITE_BACKEND_URL+"/api/drones")
       .then((res) => res.json())
       .then((data) => {
         if (data?.status === "success") {
