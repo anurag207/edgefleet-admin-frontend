@@ -5,10 +5,11 @@ import DroneDetails from "./DroneDetails";
 import MissionLogs from './Components/MissionLogs';
 import Login from './Components/Login';
 import ProtectedRoute from './ProtectedRoute';
+import Home from './Components/Home/Home';
 
-function Home() {
-  return <h1>Edgefleet Frontend</h1>;
-}
+// function Home() {
+//   return <h1>Edgefleet Frontend</h1>;
+// }
 
 function App() {
   return (

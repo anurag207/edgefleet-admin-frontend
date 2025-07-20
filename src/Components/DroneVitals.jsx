@@ -28,12 +28,12 @@ const DroneVitals = ({ droneId }) => {
   if (!vitals) return <p>Loading vitals...</p>;
 
   return (
-    <div style={{ border: "1px solid #ccc", padding: "10px", marginTop: "10px" }}>
+    <div style={{  marginTop: "0px" }}>
       <h3>Drone Vitals</h3>
       <p>🌡 Temperature: <strong>{vitals.temperature}°C</strong></p>
       <p>🔋 Battery: <strong>{vitals.battery}%</strong></p>
       <p>📶 Signal: <strong>{vitals.signal}</strong></p>
-      <p style={{ fontSize: "0.8em", color: "gray" }}>
+      <p style={{ fontSize: "0.85em", color: "#666", marginTop: "8px"  }}>
         Last updated: {new Date(vitals.timestamp).toLocaleTimeString()}
       </p>
     </div>

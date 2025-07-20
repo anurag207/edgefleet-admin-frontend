@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,24 +31,29 @@ const Login = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Admin Login</h2>
+    <div className={styles.container}>
+      <h2 className={styles.heading}>Admin Login</h2>
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-      /><br />
+        className={styles.input}
+      />
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-      /><br />
-      <button onClick={handleLogin}>Login</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        className={styles.input}
+      />
+      <button onClick={handleLogin} className={styles.button}>
+        Login
+      </button>
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
+  
 };
 
 export default Login;

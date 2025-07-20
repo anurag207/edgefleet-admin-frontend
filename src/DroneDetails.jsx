@@ -52,14 +52,25 @@ function DroneDetails() {
         <h3>Live Feed</h3>
         <DroneFeed droneId={drone.id} /> {/* Image Feed Component */}
       </div>
+      
+      <hr style={{ margin: '30px 0', borderColor: '#ccc' }} />
         <DroneVitals droneId={drone.id} /> {/* Drone Vitals Component */}
+        
+<hr style={{ margin: '10px 0', borderColor: '#ccc' }} />
         <div style={{ marginTop: "20px" }}>
-        <h3>Global Controls</h3>
+        <h3>Global Controls </h3>
 
         {/*  Pause Mission Button */}
         <button
           onClick={() => handleCommand("pause_mission")}
-          style={{ marginRight: "10px", padding: "8px 12px" }}
+          style={{  marginRight: "10px",
+            padding: "10px 16px",
+            backgroundColor: "#ffc107",
+            color: "#000",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+            fontWeight: "bold"}}
         >
           ⏸ Pause Mission
         </button>
@@ -67,12 +78,29 @@ function DroneDetails() {
         {/*  Return to Base Button */}
         <button
           onClick={() => handleCommand("return_to_base")}
-          style={{ padding: "8px 12px" }}
+          style={{
+            padding: "10px 16px",
+            backgroundColor: "#28a745",
+            color: "#fff",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+            fontWeight: "bold"
+          }}
         >
           🚀 Return to Base
         </button>
       </div>
-      <button onClick={() => navigate("/admin")} style={{ marginTop: "20px" }}>
+      <button onClick={() => navigate("/admin")} style={{
+      marginTop: "30px",
+      padding: "10px 16px",
+      backgroundColor: "#6c757d",
+      color: "#fff",
+      border: "none",
+      borderRadius: "6px",
+      cursor: "pointer",
+      fontWeight: "bold"
+    }}>
         ⬅ Back to Drone List
       </button>
     </div>
